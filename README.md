@@ -1,4 +1,4 @@
-# Trippin Tacos
+# Nigiri Falls
 
 ## Kom i gang
 
