@@ -1,0 +1,17 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'meny/css/meny_items.css' %}" />
+<a href="{%url 'order:order' 1%}" >test</a>
+{% if all_meny_items %}
+  <div id="meny">
+    {% for item in all_meny_items %}
+    <div class="menyItem">
+      <center>
+      <img src="{% static "/meny/images/"%}{{item.picture_path}}"/>
+      <h4>{{ item.name }}</h4>
+      </center>
+    </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>No meny items</p>
+{% endif %}

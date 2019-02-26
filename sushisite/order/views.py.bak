@@ -1,0 +1,35 @@
+from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from . models import Order, OrderItem
+from meny.models import Item
+
+def order(request, order_id):
+
+    order = get_object_or_404(Order, pk=order_id)
+    all_order_items = order.orderitem_set.select_related()
+    item_info = {}
+    for order_item in all_order_items:
+        if not order_item.item_id.id in item_info:
+            meny_item = Item.objects.get(pk=order_item.item_id.id)
+            item_picture_path = meny_item.picture_path 
+            item_info[order_item.item_id.id]= {
+                'item_name':order_item.item_id.name,
+                'picture_path':item_picture_path,
+                'count':0
+            }
+        item_info[order_item.item_id.id]['count'] += 1
+    item_name = []
+    item_count = []
+    item_picture_path = []
+
+    for key in item_info:
+        item_name.append(item_info[key]['item_name'])
+        item_count.append(item_info[key]['count'])
+        item_picture_path.append(item_info[key]['picture_path'])
+    
+    item_info = zip(item_name, item_count, item_picture_path)
+
+    context = {
+        'item_info':item_info
+    }
+    return render(request, 'order/order_items.html', context)
