@@ -1,0 +1,26 @@
+#your_order {
+  position: relative;
+  top: 5%;
+  width: 84%;
+  margin-left: 8%;
+  margin-right: 8%;
+}
+
+img {
+  width: 100%;
+  max-width: 150px;
+}
+
+.orderItem {
+  position: relative;
+  float: left;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 4%;
+  top: 2%;
+  background-color: #999999;
+  width: 28%;
+  height: 25%;
+}
+
+

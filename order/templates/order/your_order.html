@@ -1,0 +1,18 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'order/css/your_order.css' %}" />
+{% if item_info %}
+  <div id="your_order">
+  {% for menu_item_id, item_counter in item_info %}
+    {% if item_counter != '' %}
+      <div class="orderItem">
+        <center>
+        <h4>Item id: {{menu_item_id}}</h4>
+        <h4>Item counter: {{item_counter}}</h4>
+        </center>
+      </div>
+    {% endif %}
+  {% endfor %}
+  </div>
+{% else %}
+  <p>Cant find order</p>
+{% endif %}

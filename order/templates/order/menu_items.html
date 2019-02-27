@@ -1,0 +1,22 @@
+{% load static %}
+{% comment %} {% include "header.html" %} {% endcomment %}
+<link rel="stylesheet" type="text/css" href="{% static 'order/css/menu_items.css' %}" />
+{% if all_menu_items %}
+<a href="{% url 'order:all_orders' %}">weinsi</a>
+<form id="menu" action="{% url 'order:your_order' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Bestill" id="orderButton">
+    {% for item in all_menu_items %}
+      <div class="menuItem">
+        <center>
+        <img src="{% static "/order/images/"%}{{item.picture_path}}"/>
+        <h4>{{ item.name }}</h4>
+        <input type="number" min="0" name="count">
+        <input type="hidden" value="{{item.id}}" name="menu_item_id">
+        </center>
+      </div>
+    {% endfor %}
+  </form>
+{% else %}
+  <p>No menu items</p>
+{% endif %}

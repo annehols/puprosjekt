@@ -1,0 +1,10 @@
+<center>
+{% for order, order_item_list in orders %}
+  <h4>Order number: {{ forloop.counter }}
+  <h4>{{order.date}}</h4>
+  {% for order_item in order_item_list %}
+  <h4>{{order_item.menu_item_id}}</h5>
+  {% endfor %}
+  <br/>
+{% endfor %}
+</center>
