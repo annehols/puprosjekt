@@ -77,12 +77,8 @@ WSGI_APPLICATION = 'sushisite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'SushiSite',
-        'USER': 'sushi_user',
-        'PASSWORD': 'sushi_password',
-        'HOST': 'localhost',
-        'PORT': '3306'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
